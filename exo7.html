@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exo7</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+ 
+        input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+ 
+        #message {
+            color: red;
+            font-weight: bold;
+            display: none;
+        }
+ 
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 80%;
+            margin: auto;
+        }
+ 
+        li {
+            padding: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+ 
+        li.found {
+            background-color: #268a26;
+        }
+    </style>
+    <script>
+        function filterListByStartCharacter(inputId, listId) {
+            let input = document.getElementById(inputId).value.toLowerCase();
+            let list = document.getElementById(listId).getElementsByTagName("li");
+            let found = false;
+ 
+            for (let i = 0; i < list.length; i++) {
+                let item = list[i];
+                let text = item.innerText.toLowerCase();
+ 
+                if (text.startsWith(input) && input !== "") {
+                    item.style.display = "";
+                    item.classList.add("found");
+                    found = true;
+                } else {
+                    item.style.display = "none";
+                    item.classList.remove("found");
+                }
+            }
+ 
+            let message = document.getElementById("message");
+            if (!found) {
+                message.innerText = "Aucune voiture trouvée.";
+                message.style.display = "block";
+            } else {
+                message.style.display = "none";
+            }
+        }
+        function filterListByStartCharacter(inputId, listId) { 
+    // Déclare une fonction nommée filterListByStartCharacter prenant deux paramètres :
+    // - inputId : l'ID de l'élément input (champ de texte où l'utilisateur tape sa recherche)
+    // - listId : l'ID de la liste contenant les éléments (voitures) à filtrer.
+
+    let input = document.getElementById(inputId).value.toLowerCase(); 
+    // Récupère la valeur saisie dans l'élément input avec l'ID fourni.
+    // Convertit cette valeur en minuscules pour rendre la recherche insensible à la casse.
+
+    let list = document.getElementById(listId).getElementsByTagName("li"); 
+    // Récupère tous les éléments <li> contenus dans la liste avec l'ID fourni.
+    // Cela permet d'obtenir un tableau de tous les éléments à filtrer.
+
+    let found = false; 
+    // Initialise une variable found à false.
+    // Cette variable servira à vérifier si au moins un élément correspond à la recherche.
+
+    for (let i = 0; i < list.length; i++) { 
+        // Boucle sur chaque élément <li> de la liste.
+
+        let item = list[i]; 
+        // Récupère l'élément <li> actuel.
+
+        let text = item.innerText.toLowerCase(); 
+        // Récupère le texte de l'élément actuel et le convertit en minuscules pour la comparaison.
+
+        if (text.startsWith(input) && input !== "") { 
+            // Vérifie si le texte de l'élément commence par la valeur saisie par l'utilisateur.
+
+            item.style.display = ""; 
+            // Affiche l'élément en supprimant l'affectation "none" éventuelle 
+
+            item.classList.add("found"); 
+            // Ajoute la classe "found" à l'élément pour une éventuelle mise en forme CSS.
+
+            found = true; 
+            // Définit found à true, indiquant qu'au moins un élément correspond.
+        } else { 
+            // Si le texte de l'élément ne commence pas par l'input de l'utilisateur :
+
+            item.style.display = "none"; 
+            // Masque l'élément en lui appliquant 
+
+            item.classList.remove("found"); 
+            // Supprime la classe "found" si elle était présente.
+        }
+    }
+
+    let message = document.getElementById("message"); 
+    // Récupère l'élément avec , qui affichera un message si aucun élément n'est trouvé.
+
+    if (!found) { 
+        // Si aucun élément correspondant n'a été trouvé :
+
+        message.innerText = "Aucune voiture trouvée."; 
+        // Définit le texte du message.
+
+        message.style.display = "block"; 
+        // Rend le message visible 
+    } else { 
+        // Si au moins un élément a été trouvé :
+
+        message.style.display = "none"; 
+        // Cache le message d'alerte.
+    }
+} 
+
+    </script>
+</head>
+<body>
+    <h2>Rechercher une voiture</h2>
+    <input type="text" id="search" onkeyup="filterListByStartCharacter('search', 'liste')" placeholder="Tapez un modèle...">
+    <p id="message"></p>
+    <ul id="liste">
+        <li>Audi A3</li>
+        <li>Audi Q5</li>
+        <li>BMW X1</li>
+        <li>BMW X5</li>
+        <li>Citroën C3</li>
+        <li>Citroën C4</li>
+        <li>Dacia Duster</li>
+        <li>Ford Focus</li>
+        <li>Ford Mustang</li>
+        <li>Mercedes Classe A</li>
+        <li>Mercedes Classe C</li>
+        <li>Peugeot 208</li>
+        <li>Logan DACIA </li>
+        <li>Renault Clio</li>
+        <li>Renault Clio 5</li>
+        <li>Renault Clio 4</li>
+        <li>Renault Mégane</li>
+        <li>Renault scinic</li>
+    </ul>
+</body>
+</html>
+ 
+ 
